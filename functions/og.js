@@ -7,14 +7,6 @@ import { fetchMetadata, buildTheme, shortCa } from "./_lib/theme.js";
 
 const CA_RE = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
 
-function bufToDataUrl(buf, mime) {
-  if (!buf) return null;
-  const bytes = new Uint8Array(buf);
-  let bin = "";
-  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
-  return `data:${mime || "image/png"};base64,${btoa(bin)}`;
-}
-
 export const onRequestGet = async ({ request }) => {
   const url = new URL(request.url);
   const ca = (url.searchParams.get("ca") || "").trim();
@@ -23,9 +15,15 @@ export const onRequestGet = async ({ request }) => {
     return new Response("Invalid or missing ?ca=", { status: 400 });
   }
 
+  try {
   const meta = await fetchMetadata(ca);
   const theme = await buildTheme(meta);
-  const logoSrc = bufToDataUrl(theme.imageBytes, theme.imageMime);
+  // NOTE: do NOT embed the raw logo as a data: URL. satori (inside
+  // workers-og) decodes embedded images in the Worker and silently
+  // aborts on many real-world PNGs/JPEGs, returning a 0-byte body.
+  // The palette already mirrors the logo's brand color, which is the
+  // important visual link.
+  const logoSrc = null;
 
   const symbol = (meta.symbol || "TOKEN").toUpperCase();
   const name   = meta.name || "Solana Token";
@@ -102,4 +100,12 @@ export const onRequestGet = async ({ request }) => {
       "Cache-Control": "public, max-age=3600, s-maxage=86400",
     },
   });
+  } catch (err) {
+    // Surface errors in plain text instead of a blank PNG so failures
+    // are debuggable from the browser.
+    return new Response("OG render failed: " + (err && err.stack || err), {
+      status: 500,
+      headers: { "content-type": "text/plain; charset=utf-8" },
+    });
+  }
 };
